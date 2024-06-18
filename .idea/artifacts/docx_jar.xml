@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="docx:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/docx_jar</output-path>
+    <root id="archive" name="docx.jar">
+      <element id="module-output" name="word2pdf" />
+      <element id="library" level="project" name="aspose-words-21.1-jdk17" />
+    </root>
+  </artifact>
+</component>
