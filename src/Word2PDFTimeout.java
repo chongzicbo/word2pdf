@@ -25,24 +25,24 @@ public class Word2PDFTimeout {
             @Override
             public String call() throws Exception {
                 word2PDF(finalDocPath, finalPdfPath);
-                return "word2pdf successfully!";
+                return finalPdfPath;
             }
         };
         try {
             Future<String> future = executorService.submit(call);
             //任务处理超时时间设为 1 秒
             String obj = future.get(1000 * 60, TimeUnit.MILLISECONDS);
-            System.out.println("任务成功返回:" + obj);
+            System.out.println("convert finished! the output pdf is "  + obj);
         } catch (TimeoutException ex) {
-            System.out.println("处理超时啦....");
+            System.out.println("convert timeout....");
             ex.printStackTrace();
             System.exit(-1);
         } catch (Exception e) {
-            System.out.println("处理失败.");
+            System.out.println("failed to convert.");
             e.printStackTrace();
             System.exit(-1);
         }
-        // 关闭线程池
+        // close Threadpool
         executorService.shutdown();
     }
 
